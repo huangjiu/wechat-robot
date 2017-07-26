@@ -1,5 +1,7 @@
 package com.github.wechat;
 
+import com.blade.kit.json.JSONObject;
+
 import me.biezhi.wechat.model.WechatContact;
 import me.biezhi.wechat.model.WechatMeta;
 
@@ -70,6 +72,21 @@ public class User {
 
 	public void setContact(WechatContact contact) {
 		this.contact = contact;
+	}
+
+	public void buildBaseRequest() {
+		JSONObject baseRequest = new JSONObject();
+		baseRequest.put("Uin", meta.getWxuin());
+		baseRequest.put("Sid", meta.getWxsid());
+		baseRequest.put("Skey", meta.getSkey());
+		baseRequest.put("DeviceID", meta.getDeviceId());
+		meta.setBaseRequest(baseRequest);
+	}
+
+	public void start() {
+		if (this.listener != null) {
+			this.listener.start(this);
+		}
 	}
 
 }

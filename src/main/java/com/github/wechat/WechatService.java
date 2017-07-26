@@ -14,12 +14,24 @@ public interface WechatService {
 	 */
 	String getUuid();
 	
+	/**
+	 * 获取登录图片
+	 * @param uuid
+	 * @return
+	 */
 	byte[] getImage(String uuid);
 	
 	/**
 	 * 等待登录
 	 */
-	boolean waitForLogin(User user);
+	String waitForLogin(String uuid);
+	
+	
+	/**
+	 * 获取跳转登录信息
+	 * @param wechatMeta
+	 */
+	void getRedirectInfo(WechatMeta wechatMeta);
 	
 	/**
 	 * 微信初始化
@@ -62,7 +74,7 @@ public interface WechatService {
 	 * @param wechatMeta
 	 * @param data
 	 */
-	void handleMsg(WechatMeta wechatMeta, JSONObject data);
+	void handleMsg(User user, JSONObject data);
 	
 	/**
 	 * 获取最新消息

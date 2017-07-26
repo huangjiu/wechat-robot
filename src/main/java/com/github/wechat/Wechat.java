@@ -2,10 +2,10 @@ package com.github.wechat;
 
 public interface Wechat {
 
-	User login(String uid);
+	User init(String uid);
 
-	void waitForLogin(User user);
-
+	void login(User user);
+	
 	void start(User user);
-
+	
 }
